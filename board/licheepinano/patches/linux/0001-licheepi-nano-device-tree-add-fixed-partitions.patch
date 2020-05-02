@@ -1,0 +1,52 @@
+From 5147cf294f18517c67b6ae430663cb9bd6537826 Mon Sep 17 00:00:00 2001
+From: florpor <florist.powers@gmail.com>
+Date: Thu, 30 Apr 2020 15:31:33 +0300
+Subject: [PATCH] licheepi nano device tree - add fixed partitions
+
+---
+ .../boot/dts/suniv-f1c100s-licheepi-nano.dts  | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/arch/arm/boot/dts/suniv-f1c100s-licheepi-nano.dts b/arch/arm/boot/dts/suniv-f1c100s-licheepi-nano.dts
+index 1f5e3a664b11..bb260b27109e 100644
+--- a/arch/arm/boot/dts/suniv-f1c100s-licheepi-nano.dts
++++ b/arch/arm/boot/dts/suniv-f1c100s-licheepi-nano.dts
+@@ -51,6 +51,35 @@
+ 		compatible = "winbond,w25q128", "jedec,spi-nor";
+ 		reg = <0>;
+ 		spi-max-frequency = <40000000>;
++
++		partitions {
++			compatible = "fixed-partitions";
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			partition@0 {
++				label = "u-boot";
++				reg = <0x000000 0x100000>;
++				read-only;
++			};
++
++			partition@100000 {
++				label = "dtb";
++				reg = <0x100000 0x10000>;
++				read-only;
++			};
++
++			partition@110000 {
++				label = "kernel";
++				reg = <0x110000 0x4f0000>;
++				read-only;
++			};
++
++			partition@600000 {
++				label = "rootfs";
++				reg = <0x600000 0xA00000>;
++			};
++		};
+ 	};
+ };
+ 
+-- 
+2.26.2
+

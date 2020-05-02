@@ -1,0 +1,26 @@
+From c2033aa5fc89ef282521c7865aaae1adbbd4c50b Mon Sep 17 00:00:00 2001
+From: florpor <florist.powers@gmail.com>
+Date: Thu, 30 Apr 2020 17:48:34 +0300
+Subject: [PATCH] remove sunxi-u-boot mmc2 rename since licheepi nano has no
+ mmc2
+
+---
+ arch/arm/dts/sunxi-u-boot.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/dts/sunxi-u-boot.dtsi b/arch/arm/dts/sunxi-u-boot.dtsi
+index fdd4c80aa4..30e0f1b63e 100644
+--- a/arch/arm/dts/sunxi-u-boot.dtsi
++++ b/arch/arm/dts/sunxi-u-boot.dtsi
+@@ -2,7 +2,7 @@
+ 
+ / {
+ 	aliases {
+-		mmc1 = &mmc2;
++		//mmc1 = &mmc2;
+ 	};
+ 
+ 	binman {
+-- 
+2.26.2
+
